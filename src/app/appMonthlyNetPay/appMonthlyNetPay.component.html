@@ -1,0 +1,155 @@
+<div class="Loanchart-title" style="display: table;">
+    <div style="float:left;width:20%;">
+        <h2>Monthly Net-Pays</h2>
+    </div>
+    <div style="float:left;width:80%;padding-top: 20px;padding-bottom:20px;">
+        <form method="post" enctype="multipart/form-data" role="form">
+            <div style="text-align:right;">
+                <input hidden="hidden " accept=".xls,.xlsx, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" type="file" #file placeholder="Choose file" (change)="uploadFile($event)" style="display:none;" />
+                <button style="width:200px;" type="button" class="btn-btn-success" (click)="file.click()">Click here to Upload File</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- <div class="Loanchart-chatAcct">
+
+</div> -->
+
+<div class="loan-list">
+    <!-- <div>  <h2>Loan Requests</h2> </div> -->
+
+    <div style="overflow:auto;overflow-x:auto;" class="CoverTable">
+
+        <div class="TableHeader">
+
+            <div class="TableHeader_Item1">
+                <h6>List of Loan applications ({{this.appDashboard.StaffList.length ?? 0}})</h6>
+            </div>
+
+            <div class="TableHeader_Item3">
+
+            </div>
+
+            <div class="TableHeader_Item55">
+                <label for="Search"><span class="p-size">Search</span> </label>
+                <input (keydown.enter)="this.appDashboard.onSearchPress($event, $event.target)" (keyup.enter)="this.appDashboard.onSearchPress($event, $event.target)" (keypress.enter)="this.appDashboard.onSearchPress($event, $event.target)" name="Search" type="text"
+                    [(ngModel)]="this.appDashboard.Search" value="{{this.appDashboard.Search}}" placeholder="Type and hit enter key" class="NewLoanTenure" maxlength="{{this.appDashboard.MaxSearchLength}}" />
+            </div>
+        </div>
+        <div class="TableHeader">
+            <div class="TableHeader_Item1">
+                <label for="MaxRetrival">
+                    <span class="p-size">Row Per Page</span>
+                </label>
+                <select (change)="this.appDashboard.onMaxRetrival($event)" [(ngModel)]="this.appDashboard.MaxRetrival" name="MaxRetrival" class="MaxRetrival" required>
+                    <!-- <option value="0">All</option> -->
+                    <option *ngFor="let item of this.appDashboard.MaxRetrieverList" value="{{item.No}}">{{item.No}}</option> 
+                </select>
+            </div>
+
+            <div class="TableHeader_Item3">
+                <!-- <label for="DataStatus">
+                    <span class="p-size">Status</span>
+                </label>
+                <select (change)="this.appDashboard.onStatusRetrival($event)" [(ngModel)]="this.appDashboard.DataStatus" name="DataStatus" class="DataStatus" required>
+                    <option value="All">All</option>
+                    <option value="Not Active">Not Active</option>
+                    <option value="Success">Success</option>
+               </select> -->
+            </div>
+
+            <div class="TableHeader_Item5">
+
+            </div>
+            <!--  [value]="this.appDashboard.FromDate"  [value]="this.appDashboard.ToDate" | date:'MM/dd/yyyy' | date:'yyyy/mm/dd' (input)="this.appDashboard.ToDate = this.appDashboard.ParseDate($event)" -->
+            <div class="TableHeader_Item4">
+                <label for="FromDate">
+                 <span class="p-size">Date From</span>  
+                 <input name="FromDate" type="Date" (ngModelChange)="this.appDashboard.onDateFromChange($event)" [(ngModel)]="this.appDashboard.FromDateValue"   placeholder="Date From" class="NewLoanTenure" />
+                </label>
+
+                <label for="FromDate" style="margin-left: 10px;">
+                    <span class="p-size">Date To</span> 
+                    <input name="ToDate" type="Date" (ngModelChange)="this.appDashboard.onDateToChange($event)" [(ngModel)]="this.appDashboard.ToDateValue"   placeholder="Date To" class="NewLoanTenure" />
+                 </label>
+                <button class="SearchButton" (click)="this.appDashboard.onSearchButton($event)">Search</button>
+            </div>
+        </div>
+        <div>
+            <table id="paginationFull" class="table" width="100%">
+                <thead>
+                    <tr>
+                        <th class="th-sm">No
+                        </th>
+                        <th class="th-sm">Month
+                        </th>
+                        <th class="th-sm">Year
+                        </th>
+                        <th class="th-sm">Customer's
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of this.appDashboard.StaffList" style="margin-top:10px;margin-bottom:10px;">
+                        <td>{{item.no}}</td>
+                        <td>{{item.monthlyName}}</td>
+                        <td>{{item.monthlYear}}</td>
+                        <td><a href="/uploadnetpay?AppId={{item.id}}" routerLinkActive="router-link-active">View</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="TableFooter">
+            <div class="TableFooter_Item1">
+                <label for="MaxRetrival">
+                <span class="p-size">Showing 
+                    {{this.appDashboard.ShowPageStart}} to {{this.appDashboard.ShowPageEnd}} of {{this.appDashboard.ShowPageTotal}} entries
+                </span>
+                </label>
+                <!-- <select (change)="this.appDashboard.onMaxRetrival($event)" [(ngModel)]="this.appDashboard.MaxRetrival" name="MaxRetrival" class="MaxRetrival" required>
+                    <option value="0">All</option>
+                    <option *ngFor="let item of this.appDashboard.MaxRetrieverList" value="{{item.No}}">{{item.No}}</option>         
+                </select> -->
+            </div>
+
+            <div *ngIf="this.appDashboard.ResponseData.dataLoad!=null && this.appDashboard.ResponseData.dataLoad.loopPageModes!=null" class="TableFooter_Item5">
+                <ul *ngIf="this.appDashboard.ResponseData.dataLoad.loopPageModes.length > 0" class="ul-Pagenations">
+                    <li class="li-Pagenations">
+                        <span class="pagenation-min-no">{{this.appDashboard.ResponseData.dataLoad.lastSelectedNumber}}</span>
+                    </li>
+                    <li class="li-Pagenations">
+                        <span class="pagenation-min-click">
+                            <button style="background-color: rgb(59, 138, 111);color: #ffffff;" (click)="this.appDashboard.onPreviousPagenationClick(0, this.appDashboard.ResponseData.dataLoad)" *ngIf="this.appDashboard.ResponseData.dataLoad.hasPreviousPagenation">Previous</button>
+                        </span>
+                    </li>
+
+                    <!-- {{item.selectedNumber}} -->
+                    <!-- (click)="this.appDashboard.onPagenationClick(i, item)" -->
+
+                    <!-- <li *ngFor="let item of this.appDashboard.ResponseData.dataLoad.pageModes; let i = index" class="li-Pagenations">
+                        <button>{{this.appDashboard.ResponseData.dataLoad.pageModes[i].selectedNumber}}</button>
+                    </li> -->
+
+                    <li *ngFor='let item of this.appDashboard.ResponseData.dataLoad.loopPageModes' class="li-Pagenations">
+                        <button *ngIf="item.isSelected===false" style="background-color: rgba(59, 138, 110, 0.331);color: #000000;" (click)="this.appDashboard.onPagenationClick(0, item)">{{item.selectedNumber}}</button>
+                        <button *ngIf="item.isSelected" class="blackbutton" style="background-color: rgb(59, 138, 111);color: #ffffff;" (click)="this.appDashboard.onPagenationClick(0, item)">{{item.selectedNumber}}</button>
+                    </li>
+
+                    <li class="li-Pagenations">
+                        <span class="pagenation-max-click"><button style="background-color: rgb(59, 138, 111);color:#ffffff;" (click)="this.appDashboard.onNextPagenationClick(0, this.appDashboard.ResponseData.dataLoad)"  *ngIf="this.appDashboard.ResponseData.dataLoad.hasNextPagenation">Next</button></span>
+                    </li>
+
+                    <li class="li-Pagenations">
+                        <span class="pagenation-max-no">{{this.appDashboard.ResponseData.dataLoad.totalSelectedNumber}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

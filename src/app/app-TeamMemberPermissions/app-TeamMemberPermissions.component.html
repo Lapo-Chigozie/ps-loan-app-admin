@@ -1,0 +1,94 @@
+<div class="Loanchart-title">
+    <h2>Permissions</h2>
+</div>
+
+<div class="loan-list">
+
+    <div *ngIf="this.LoginUserPermission != null && this.LoginUserPermission != undefined" class="Profile-Details" style="overflow:auto;">
+
+        <p *ngIf="this.LoginUserPermission.IsASSISTANTHEADOFOPERATION"><b>Role: </b> ASSISTANT HEAD OF OPERATION</p>
+
+        <p *ngIf="this.LoginUserPermission.IsDISBURSEMENTOFFICER"><b>Role: </b> DISBURSEMENT OFFICER</p>
+
+        <p *ngIf="this.LoginUserPermission.IsGROUPHEAD"><b>Role: </b> GROUP HEAD</p>
+
+        <p *ngIf="this.LoginUserPermission.IsHEADOFOPERATIONS"><b>Role: </b> HEAD OF OPERATIONS</p>
+
+        <p *ngIf="this.LoginUserPermission.IsRECONCILIATIONANDACCOUNTOFFICER"><b>Role: </b> RECONCILIATION AND ACCOUNT OFFICER</p>
+
+        <p *ngIf="this.LoginUserPermission.IsRELATIONSHIPOFFICER"><b>Role: </b> RELATIONSHIP OFFICER</p>
+
+        <p *ngIf="this.LoginUserPermission.IsTEAMLEADS"><b>Role: </b> TEAM LEADS</p>
+
+        <p *ngIf="this.LoginUserPermission.IsTenureAccessRight"><b>Access Right: </b> Loan Tenure Setup </p>
+
+        <p *ngIf="this.LoginUserPermission.IsLoanSettingAccessRight"><b>Access Right: </b> Loan Settings</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToAnonymousLoanApplication"><b>Access Right: </b> Anonymous Loan Applications</p>
+
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToApprovedLoan"><b>Access Right: </b> Approved Loan</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToCancelLoan"><b>Access Right: </b> Cancel Loan</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToExportDISBURSEMENTLoan"><b>Access Right: </b> Exporting Approved Loan Applications</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToUploadBackDISBURSEMENTLoan"><b>Access Right: </b> Upload Back DISBURSEMENT Loan Applications</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToViewLoan"><b>Access Right: </b>View Loan Applications</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToUploadBackRepaymentLoan"><b>Access Right: </b>Upload Repayment Loan Applications</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToViewUploadBackRepaymentLoan"><b>Access Right: </b>View Uploaded Repayment Loan Applications</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToViewDisbursementLoan"><b>Access Right: </b>View Disbursement Loan Applications</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToPrintLoan"><b>Access Right: </b>Print Loan Applications</p>
+
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToProceedLoan"><b>Access Right: </b>Proceed a Loan Applications</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttoapprovecustomerloan"><b>Access Right: </b>Approved Customer Loan Applications</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttocreateahub"><b>Access Right: </b>Createa Hub</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttocreateateammember"><b>Access Right: </b>Createa Team Member</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttocreatetenure"><b>Access Right: </b>Create Tenure</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttodisablecustomerstoapplyforaloan"><b>Access Right: </b>Disable/Enable Customers to Apply for Loan</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttodisablehubs"><b>Access Right: </b>Disable/Enable Hubs</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToEditTeamMemberPermissions"><b>Access Right: </b>Edit Team Member Permissions</p>
+
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToExportDisbursementloan1"><b>Access Right: </b>Exporting Disbursement Loans</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttoloansettings"><b>Access Right: </b>Loan Settings</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttorejectaloan"><b>Access Right: </b>Rejecting a Loan</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRightToUploadBackDisbursementloan"><b>Access Right: </b>Upload Disbursement Loans Applications</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttoviewveammembers"><b>Access Right: </b>View Team Members</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttoviewcustomersloans"><b>Access Right: </b>View Customers Loan Applications</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttoviewcustomers"><b>Access Right: </b>View Customers</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttoviewhubs"><b>Access Right: </b>View Hubs</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttoviewloandetails"><b>Access Right: </b>View Loan Details</p>
+
+        <p *ngIf="this.LoginUserPermission.AccessRighttoviewtenure"><b>Access Right: </b>View Tenure</p>
+
+        <p *ngIf="this.LoginUserPermission.CreateLoanNarration"><b>Access Right: </b>Create Loan Applications Reasons</p>
+
+        <p *ngIf="this.LoginUserPermission.ViewLoanNarration"><b>Access Right: </b>View Loan Applications Reasons</p>
+
+    </div>
+
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

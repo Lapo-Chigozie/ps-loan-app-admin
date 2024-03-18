@@ -1,0 +1,98 @@
+<div class="Loanchart-title" style="display:table;">
+    <div style="float:left;width:50%;">
+        <h2>New Staff & Permissions</h2>
+    </div>
+    <div style="float:left;width:50%;padding-top: 20px;padding-bottom:25px;text-align:right;">
+        <button *ngIf="StaffAccessRight.hasPermissionToCreatedStaff" (click)="this.onAddStaffID()" style="width:150px;height: 50px;background-color: #094b03;margin-right:5px; " type="button " class="btn-btn-success ">Save Permission</button>
+    </div>
+</div>
+
+<!-- <div class="Loanchart-chatAcct ">
+
+</div> -->
+<div style="width: 100%;display: table; ">
+    <div class="loan-list" style="float:left;width:45.5%;">
+        <div class="Profile-Details " style="overflow:auto;background-color: #fff;">
+            <p>
+                <input style="padding-left: 10px;padding-right: 10px;" required type="text" [(ngModel)]="this.StaffPermission" placeholder="Enter Staff ID e.g SN0001" class="NewLoanTenure" maxlength="1000" />
+            </p>
+            <br />
+            <p>
+                <input style="padding-left: 10px;padding-right: 10px;" required type="text" [(ngModel)]="this.PhoneNumber" placeholder="Enter Staff Phone Number" class="NewLoanTenure" maxlength="11" />
+            </p>
+            <br />
+            <p>
+                <input style="padding-left: 10px;padding-right: 10px;" type="email" [(ngModel)]="this.EmailAddress" placeholder="Enter Staff Email Address (Optional)" class="NewLoanTenure" maxlength="1000" />
+            </p>
+            <br />
+            <br />
+            <p>
+                <label class="container">Access right to add other Staffs & Permissions with their Staff ID
+                    <input [checked]="IsStaffsCreatePermissionAccessRight" 
+                    (change)="onStaffsCreatePermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p>
+                <label class="container">Access right to activate or de-activate other Staffs login
+                    <input [checked]="IsStaffsActivatePermissionAccessRight" 
+                    (change)="onStaffsActivatePermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p>
+                <label class="container">Access right to Approve or Cancel Customer's Loan.
+                    <input [checked]="IsStaffsLoanPermissionAccessRight" 
+                    (change)="onStaffsLoanPermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p>
+                <label class="container">Access right to (Create or Remove) loan Tenure.
+                    <input [checked]="IsStaffsLoanTenurePermissionAccessRight" 
+                    (change)="onStaffsLoanTenurePermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p>
+                <label class="container">Access right to loan settings.
+                    <input [checked]="IsStaffsLoanSettingsPermissionAccessRight" 
+                    (change)="onStaffsLoanSettingsPermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p>
+                <label class="container">Access right to Monthly Net Pays.
+                    <input [checked]="IsStaffsNetPaysPermissionAccessRight" 
+                    (change)="onStaffsNetPaysPermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p>
+                <label class="container">Access right to complete Customer's loan repayments.
+                    <input [checked]="IsStaffsCompleteLoanRepaymentPermissionAccessRight" 
+                    (change)="onStaffsCompleteLoanRepaymentPermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p>
+                <label class="container">Access right to block Customer's from applying loan (settings).
+                    <input [checked]="IsStaffsBlockCustomerApplyLoanPermissionAccessRight" 
+                    (change)="onStaffsBlockCustomerApplyLoanPermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+
+        </div>
+        <!-- this.ProfileDetails.accountId this.ProfileDetails.id this.ProfileDetails.staff -->
+    </div>
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

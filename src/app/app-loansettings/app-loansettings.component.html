@@ -1,0 +1,141 @@
+<div class="Loanchart-title" style="display:table;">
+    <div style="float:left;width:50%;">
+        <h4>Loan Settings</h4>
+    </div>
+    <div style="float:left;width:50%;padding-top: 20px;padding-bottom:25px;text-align:right;">
+        <button (click)="this.onSaveSettings()" style="width:150px;height: 50px;background-color: #094b03;margin-right:5px; " type="button " class="btn-btn-success ">Save</button>
+    </div>
+</div>
+
+<!-- <div class="Loanchart-chatAcct"></div> -->
+
+<div style="width: 100%;display: table;">
+    <div class="loan-list" style="float:left;width:95%;">
+        <div class="Profile-Details " style="overflow:auto;background-color: white;">
+
+            <!-- <h2 style="background-color: white;padding-left: 10px;padding-right: 10px;color: black;font-size: 18px;"></h2> -->
+
+            <!-- <p>
+                <label class="container">Use flat repayment on customer's loan repayment
+        <input [checked]="this.LoanInterestCalculation" 
+        (change)="onLoanInterestCalculation($event)" type="checkbox">
+        <span class="checkmark"></span>
+        </label>
+            </p> -->
+
+            <!-- *ngIf="this.LoanInterestCalculation==false" -->
+
+            <p>
+                <label>Loan Interest Rate, example 5.1</label>
+            </p>
+
+            <p>
+                <input style="padding-left: 10px;padding-right: 10px; width: 35%;" type="text" [(ngModel)]="this.LoanInterest" value="{{this.LoanInterest}}" placeholder="Enter Loan Interest" class="NewLoanTenure" maxlength="5" />
+            </p>
+
+            <h2 style="background-color: white;padding-left: 10px;padding-right: 10px;color: black;font-size: 18px;">Minimum loan amount</h2>
+            <!-- <p>
+                <label>Minimum loan amount</label>
+            </p> -->
+            <p>
+                <input style="padding-left: 10px;padding-right: 10px; width: 35%;" type="text" required [(ngModel)]="this.MinLoanAmount" value="{{this.MinLoanAmount}}" placeholder="Enter Min Loan Amount" class="NewLoanTenure" maxlength="20" />
+            </p>
+
+            <h2 style="background-color: white;padding-left: 10px;padding-right: 10px;color: black;font-size: 18px;">Maximum loan amount</h2>
+
+            <!-- <p>
+                <label class="container">Use Customer's Monthly Net-Pays as Maximum loan amount when applying for loan.
+              <input [checked]="this.LoanScheduled" 
+              (change)="onNetPaysCalculation($event)" type="checkbox">
+              <span class="checkmark"></span>
+              </label>
+            </p> -->
+
+            <!-- <p *ngIf="this.LoanScheduled==false">
+                <label>Maximum loan amount</label>
+            </p> -->
+
+            <p>
+                <input style="padding-left: 10px;padding-right: 10px; width: 35%;" type="text" [(ngModel)]="this.MaxLoanAmount" value="{{this.MaxLoanAmount}}" placeholder="Enter Max Loan Amount" class="NewLoanTenure" maxlength="20" />
+            </p>
+
+            <p>
+                <label>Send Email to Customers when loan application submitted</label>
+            </p>
+
+            <p>
+
+                <label class="container">
+                        <span *ngIf="this.SendEmailCustomerLoanApplicationSubmitted">Disable.</span>
+                        <span *ngIf="this.SendEmailCustomerLoanApplicationSubmitted==false">Enable.</span>
+                        <input [checked]="this.SendEmailCustomerLoanApplicationSubmitted" (change)="onSendEmailCustomerLoanApplicationSubmitted($event)" type="checkbox" />
+                        <span class="checkmark"></span>
+                        </label>
+            </p>
+
+            <p>
+                <label>Send Email to Team Leads when loan application submitted</label>
+            </p>
+
+            <p>
+
+                <label class="container">
+                        <span *ngIf="this.SendEmailHubTeamLeadLoanApplicationSubmitted">Disable.</span>
+                        <span *ngIf="this.SendEmailHubTeamLeadLoanApplicationSubmitted==false">Enable.</span>
+                        <input [checked]="this.SendEmailHubTeamLeadLoanApplicationSubmitted" (change)="onSendEmailHubTeamLeadLoanApplicationSubmitted($event)" type="checkbox" />
+                        <span class="checkmark"></span>
+                        </label>
+            </p>
+
+            <p>
+                <label>Send SMS to Team Leads when loan application submitted</label>
+            </p>
+
+            <p>
+
+                <label class="container">
+                        <span *ngIf="this.SendSMSHubTeamLeadLoanApplicationSubmitted">Disable.</span>
+                        <span *ngIf="this.SendSMSHubTeamLeadLoanApplicationSubmitted==false">Enable.</span>
+                        <input [checked]="this.SendSMSHubTeamLeadLoanApplicationSubmitted" (change)="onSendSMSHubTeamLeadLoanApplicationSubmitted($event)" type="checkbox" />
+                        <span class="checkmark"></span>
+                        </label>
+            </p>
+
+            <p>
+                <label>Send SMS to Customers when loan application submitted</label>
+            </p>
+
+            <p>
+                <label class="container">
+                    <span *ngIf="this.SendSMSCustomerLoanApplicationSubmitted">Disable.</span>
+                    <span *ngIf="this.SendSMSCustomerLoanApplicationSubmitted==false">Enable.</span>
+                    <input [checked]="this.SendSMSCustomerLoanApplicationSubmitted" (change)="onSendSMSCustomerLoanApplicationSubmitted($event)" type="checkbox" />
+                    <span class="checkmark"></span>
+                    </label>
+            </p>
+
+            <h2 style="background-color: white;padding-left: 10px;padding-right: 10px;color: black;font-size: 18px;">Customer's Loan Permission</h2>
+
+            <p>
+                <label class="container">
+              <span *ngIf="this.IsBlockLoanPortal">Enable Customer's to have access on Lapo Loan portal.</span>
+              <span *ngIf="this.IsBlockLoanPortal==false">Block Customer's from having access on Lapo Loan portal.</span>
+              <input [checked]="this.IsBlockLoanPortal" (change)="onBlockLoanPortal($event)" type="checkbox">
+              <span class="checkmark"></span>
+              </label>
+            </p>
+
+            <p *ngIf="this.IsBlockLoanPortal">
+                <label>Note reason for blocking customer's not to apply a loan from Lapo Loan Portal.</label>
+            </p>
+
+            <p *ngIf="this.IsBlockLoanPortal">
+                <textarea rows="8" cols="15" style="padding-left: 10px;padding-right: 10px; width: 98%;" required [(ngModel)]="this.message" title="Note the reason your blocking customers not to apply a loan on this portal" class="NewLoanTenure">{{this.message}}</textarea>
+            </p>
+        </div>
+
+        <!-- this.ProfileDetails.accountId this.ProfileDetails.id this.ProfileDetails.staff -->
+    </div>
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

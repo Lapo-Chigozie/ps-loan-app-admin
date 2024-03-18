@@ -1,0 +1,81 @@
+<div class="Loanchart-title" style="display: table;">
+
+    <div style="float:left;width:30%;align-items:center;display:flex;padding-top: 10px;padding-bottom: 10px;">
+        <div class="image" style="flex-basis:20%;padding-top:7px;">
+            <button (click)="this.onBackWard($event)" style="background-color: transparent;border: 0px solid transparent;cursor: pointer;"> <img style="padding-left: 10px;" width="20" src="assets/images/icons8-arrow-96-green.png" /></button>
+        </div>
+        <div class="text" style="color: #000000;padding-left: 20px;text-align: center;">
+            <h3>Customers Net-Pays</h3>
+        </div>
+    </div>
+    <!-- <h2>
+        <span><button (click)="this.onBackWard($event)" style="background-color: transparent;border: 0px solid transparent;cursor: pointer;"> <img style="padding-left: 10px;" width="20" src="assets/images/icons8-arrow-96-green.png" /></button></span>        <span>Customer Net-Pays</span>
+    </h2> -->
+</div>
+
+<div class="loan-list">
+    <!-- <div>
+        <h2 style="color:#fff">Client IPPIS Number</h2>
+    </div> -->
+    <div style="height:400px;overflow:auto;">
+        <table id="paginationFull" class="table" width="100%">
+            <thead style="margin-top:25px;">
+                <tr>
+                    <th class="th-sm">No
+                    </th>
+                    <th class="th-sm">IPPIS No
+                    </th>
+                    <th class="th-sm">Acct Name
+                    </th>
+                    <th class="th-sm">Acct Number
+                    </th>
+                    <th class="th-sm">Bank Name
+                    </th>
+                    <th class="th-sm">Net Pay
+                    </th>
+                    <th class="th-sm">NP Date
+                    </th>
+                    <th class="th-sm">Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- , clientId , command ,createdAccountById ,createdDate, grade ,gradeStep , id , , , ,payGroup , -->
+                <tr *ngFor="let item of ClientNetPayDetails">
+                    <td>{{item.no}}</td>
+                    <td>{{item.pfNumber}}</td>
+                    <td>{{item.bankAccountName}}</td>
+                    <td>{{item.bankAccountNumber}}</td>
+                    <td>{{item.bankName}}</td>
+                    <td>{{item.netPay}}</td>
+                    <td>{{item.npfDate}}</td>
+                    <td><a style="color:#2f0ed4;text-decoration: underline;cursor: pointer;" (click)="DeleteMonthlyNetPay(item.id, item.PFNumber)" routerLinkActive="router-link-active">Delete Net-Pay</a></td>
+                </tr>
+            </tbody>
+            <!-- <tfoot>
+                <tr>
+                    <th class="th-sm">No
+                    </th>
+                    <th class="th-sm">IPPIS No
+                    </th>
+                    <th class="th-sm">Acct Name
+                    </th>
+                    <th class="th-sm">Acct Number
+                    </th>
+                    <th class="th-sm">Bank Name
+                    </th>
+                    <th class="th-sm">Net Pay
+                    </th>
+
+                    <th class="th-sm">NP Date
+                    </th>
+
+                    <th class="th-sm">Action
+                    </th>
+                </tr>
+            </tfoot> -->
+        </table>
+    </div>
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

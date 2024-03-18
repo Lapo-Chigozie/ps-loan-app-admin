@@ -1,0 +1,52 @@
+<div class="Loanchart-title" style="display: table;">
+    <div style="float:left;width:50%;">
+        <h2>Repayment Due</h2>
+    </div>
+
+    <div style="float:left;width:50%;padding-top: 20px;padding-bottom:25px;text-align:right;">
+        <div *ngIf="this.LoanDetails.loanAppReviewStatus.status==='Approved'">
+            <button (click)="this.onApproveLoanApp(this.LoanDetails.loanDetailsData.appId)" style="width:170px;height: 50px;background-color: #094b03;margin-right:5px;" type="button" class="btn-btn-success">Repayment Completed</button>
+            <!-- <button (click)="this.onCancelLoanApp(this.LoanDetails.loanDetailsData.appId)" style="width:150px;height: 50px;background-color: #bc4108;" type="button" class="btn-btn-success">Cancel Loan</button> -->
+        </div>
+    </div>
+</div>
+<!-- <div class="Loanchart-chatAcct">
+
+</div> -->
+<div style="width:100%;display: table;">
+    <div class="loan-list" style="width:95%;">
+        <!-- <div>
+          <h2 style="color: #000000;">Loan & Status</h2>
+      </div> -->
+        <div class="Profile-Details" style="overflow:auto;">
+            <p><b>Name: </b> {{this.LoanDetails.bvnDetail.firstName}}, {{this.LoanDetails.bvnDetail.lastName}}, {{this.LoanDetails.bvnDetail.middleName}}</p>
+
+            <p> <b>Status: </b>
+                <span *ngIf="this.LoanDetails.loanAppReviewStatus.status==='Approved'" style="color:#ffffff;background-color:#14c604;box-shadow: 2px 2px 2px #7c7b7b96;border-radius:30px;padding: 5px 5px 5px 5px;">
+              {{this.LoanDetails.loanAppReviewStatus.status}}
+              </span>
+                <span *ngIf="this.LoanDetails.loanAppReviewStatus.status==='Pending'" style="color:#ffffff;background-color:#dab705;box-shadow: 2px 2px 2px #7c7b7b96;border-radius:30px;padding: 5px 5px 5px 5px;">
+                {{this.LoanDetails.loanAppReviewStatus.status}}
+                  </span>
+                <span *ngIf="this.LoanDetails.loanAppReviewStatus.status==='Cancelled'||this.LoanDetails.loanAppReviewStatus.status=='Cancel'" style="color:#ffffff;background-color:#ec2203;box-shadow: 2px 2px 2px #7c7b7b96;border-radius:30px;padding: 5px 5px 5px 5px;">
+                {{this.LoanDetails.loanAppReviewStatus.status}}
+                </span>
+            </p>
+
+            <p><b>Loan Amount: </b> {{this.LoanDetails.loanDetailsData.loanAmountString}}, <b>Loan Tenure: </b> {{this.LoanScheduleData.teunerName}}</p>
+
+            <p><b>Bank Name: </b> {{this.LoanDetails.loanDetailsData.bankName}}, <b>Account Name: </b> {{this.LoanDetails.loanDetailsData.acctName}}, <b>Account NO: </b> {{this.LoanDetails.loanDetailsData.acctNumber}}</p>
+
+        </div>
+        <!-- this.ProfileDetails.accountId this.ProfileDetails.id this.ProfileDetails.staff -->
+        <div>
+            <h2 style="color: #000;">Write a note</h2>
+        </div>
+
+        <div class="Profile-Details" style="overflow:auto;">
+            <textarea [maxLength]="4000" [(ngModel)]="AppNote" style="width:97.5%;padding-left: 10px;padding-right: 10px;padding-bottom: 15px;padding-top: 15px;" rows="15"></textarea>
+        </div>
+    </div>
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

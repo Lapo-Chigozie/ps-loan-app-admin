@@ -1,0 +1,28 @@
+<div class="Loanchart-title" style="display:table;">
+    <div style="float:left;width:50%;">
+        <h2>Assign a default loan to Reconciliation Officer</h2>
+    </div>
+    <div style="float:left;width:50%;padding-top: 20px;padding-bottom:25px;text-align:right;">
+        <button (click)="this.onAssignLoan($event)" style="width:150px;height: 50px;background-color: #094b03;margin-right:5px; " type="button " class="btn-btn-success ">Assign</button>
+    </div>
+</div>
+<!-- <div class="Loanchart-chatAcct ">
+
+</div> -->
+<div style="width: 100%;display: table;">
+
+    <div class="loan-list" style="float:left;width:100%;">
+        <p>
+            <select style="padding-left: 10px;padding-right: 10px; width: 38%;" [(ngModel)]="this.ReconciliationOfficer" class="NewLoanTenure" required>
+              <option selected value="">--Select--Reconciliation--Officer--</option>
+              <option *ngFor="let item of this.ReconData" value="{{item.teamId}}">{{item.hubTeamName}}  {{", Hub Groub: "}} {{item.hubTeamGroupName}}</option>
+            </select>
+        </p>
+    </div>
+
+    <div class="loan-list" style="float:left;width:46%;">
+
+    </div>
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

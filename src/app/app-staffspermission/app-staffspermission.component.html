@@ -1,0 +1,92 @@
+<div class="Loanchart-title" style="display:table;">
+    <div style="float:left;width:50%;">
+        <h2>Team Member Permissions</h2>
+    </div>
+    <div style="float:left;width:50%;padding-top: 20px;padding-bottom:25px;text-align:right;">
+        <button *ngIf="StaffAccessRight.hasPermissionToCreatedStaff" (click)="this.onNewLoanApp()" style="width:150px;height: 50px;background-color: #094b03;margin-right:5px; " type="button " class="btn-btn-success ">New Staff</button>
+    </div>
+</div>
+<!-- <div class="Loanchart-chatAcct ">
+
+</div> -->
+<div style="width: 100%;display: table; ">
+    <div class="loan-list" style="float:left;width:95%;">
+        <div class="Profile-Details " style="overflow:auto;background-color: #fff;">
+
+            <p *ngIf="this.StaffAccessRight.hasPermissionToDisableStaff">
+                <label class="container">Staff Login Permission
+                <input [checked]="this.StaffList.supperAdmin" 
+                (change)="BlockStaffAccessRight($event, this.headerId)" type="checkbox">
+                <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p *ngIf="StaffAccessRight.hasPermissionToCreatedStaff">
+                <label class="container">New Staffs & Permissions with their Staff ID
+                  <input [checked]="this.StaffList.hasPermissionToCreatedStaff" 
+                  (change)="this.HasPermissionToCreatedStaff($event, this.headerId)" type="checkbox">
+                  <span class="checkmark"></span>
+              </label>
+            </p>
+
+            <p *ngIf="this.StaffAccessRight.hasPermissionToDisableStaff">
+                <label class="container">(Activate or De-Activate) other Staffs login
+                  <input [checked]="this.StaffList.hasPermissionToDisableStaff" 
+                  (change)="HasPermissionToDisableStaff($event, this.headerId)" type="checkbox">
+                  <span class="checkmark"></span>
+              </label>
+            </p>
+
+            <p *ngIf="this.StaffAccessRight.hasPermissionToLoanApprovalStaff">
+                <label class="container">(Approve and Cancel) Customer's Loan.
+                  <input [checked]="this.StaffList.hasPermissionToLoanApprovalStaff" 
+                  (change)="ProcessStaffLoanApprovalApp($event, this.headerId)" type="checkbox">
+                  <span class="checkmark"></span>
+              </label>
+            </p>
+
+            <p *ngIf="this.StaffAccessRight.hasPermissionToDisableStaff">
+                <label class="container">(Create or Remove) loan Tenure.
+                    <input [checked]="this.StaffList.isStaffsLoanTenurePermissionAccessRight" 
+                    (change)="onStaffsLoanTenurePermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p *ngIf="this.StaffAccessRight.hasPermissionToDisableStaff">
+                <label class="container">Loan settings.
+                    <input [checked]="this.StaffList.isStaffsLoanSettingsPermissionAccessRight" 
+                    (change)="onStaffsLoanSettingsPermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p *ngIf="this.StaffAccessRight.hasPermissionToDisableStaff">
+                <label class="container">Monthly Net Pays.
+                    <input [checked]="this.StaffList.isStaffsNetPaysPermissionAccessRight" 
+                    (change)="onStaffsNetPaysPermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p *ngIf="this.StaffAccessRight.hasPermissionToDisableStaff">
+                <label class="container">Customer's loan repayments.
+                    <input [checked]="this.StaffList.isStaffsCompleteLoanRepaymentPermissionAccessRight" 
+                    (change)="onStaffsCompleteLoanRepaymentPermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p *ngIf="this.StaffAccessRight.hasPermissionToDisableStaff">
+                <label class="container">Block Customer's from applying loan (settings).
+                    <input [checked]="this.StaffList.isStaffsBlockCustomerApplyLoanPermissionAccessRight" 
+                    (change)="onStaffsBlockCustomerApplyLoanPermissionAccessRightChanged($event)" type="checkbox">
+                    <span class="checkmark"></span>
+                </label>
+            </p>
+        </div>
+        <!-- this.ProfileDetails.accountId this.ProfileDetails.id this.ProfileDetails.staff -->
+    </div>
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

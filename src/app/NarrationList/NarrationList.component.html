@@ -1,0 +1,62 @@
+<div class="Loanchart-title" style="display: table;">
+    <div style="float:left;width:50%;">
+        <h4>Reasons for Loan Application</h4>
+    </div>
+
+    <div style="float:left;width:50%;padding-top: 20px;padding-bottom:25px;text-align:right;">
+        <button *ngIf="this.LoginUserPermission!=null && this.LoginUserPermission.CreateLoanNarration" (click)="this.onNewNarrationsApp()" style="width:150px;height: 50px;background-color: #bc4108;" type="button" class="btn-btn-success">New Narration</button>
+    </div>
+</div>
+
+<!-- <div class="Loanchart-chatAcct"> </div> -->
+
+<div class="loan-list">
+    <!-- <div> <h2>Loan Requests</h2> </div> -->
+    <div style="overflow:auto;">
+        <table id="paginationFull" class="table" width="100%">
+            <thead>
+                <tr>
+                    <th class="th-sm"> Name
+                    </th>
+                    <!-- <th class="th-sm"> Interest </th> -->
+
+                    <th class="th-sm"> Created Date
+                    </th>
+                    <th class="th-sm">
+                    </th>
+                </tr>
+            </thead>
+            <tbody *ngIf="this.LoanApps!=null && this.LoanApps!=undefined">
+                <tr *ngFor="let item of this.LoanApps" style="margin-top:10px;margin-bottom:10px;">
+                    <td>{{item.name}}</td>
+                    <td>{{item.date}}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <!-- <tfoot>
+            <tr>
+                <th class="th-sm ">No
+                </th>
+                <th class="th-sm ">Name
+                </th>
+                <th class="th-sm ">IPPIS No
+                </th>
+                <th class="th-sm ">Amount
+                </th>
+                <th class="th-sm ">Status
+                </th>
+                <th class="th-sm ">Applied Date
+                </th>
+                <th class="th-sm ">Action
+                </th>
+                <th class="th-sm ">Action
+                </th>
+                <th class="th-sm">Action
+                </th>
+            </tr>
+        </tfoot> -->
+        </table>
+    </div>
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

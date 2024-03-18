@@ -1,0 +1,33 @@
+<div class="ineardiv1" style="z-index:70;">
+    <div class="logo_content" style="z-index:70;">
+        <a [routerLink]="['/home']" routerLinkActive="router-link-active">
+            <img src="../../assets/images/headerlogo.png" width="200" height="60" />
+        </a>
+    </div>
+
+    <div class="menu_content" style="z-index:70;">
+        <div class="h_ul_div_2" style="z-index:70;">
+            <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;">Admin Dashboard</p>
+        </div>
+
+        <div class="h_ul_div_2" style="z-index:70;">
+            <!-- <div class="dropdown" style="float:right;z-index:initial;">
+                <button class="dropbtn">MENU</button>
+                <div class="dropdown-content" style="z-index:5;">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </div> -->
+
+            <ul class="h_ul_list_2" style="z-index:70;">
+                <li>
+                    <span *ngIf="this.acctDetails!= null && this.acctDetails!=undefined && (!this.acctDetails.FirstName?.startsWith('Olorunmo') && !this.acctDetails.FirstName?.startsWith('Olorunmo Ojo'))" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size:12px;font-weight:700;color:#000; ">Login User: {{this.acctDetails.FirstName}} /  <span style="font-size: 8px;">{{this.acctDetails.Role}}</span></span>
+
+                    <span *ngIf="this.acctDetails!= null && this.acctDetails!=undefined && (this.acctDetails.FirstName?.startsWith('Olorunmo') || this.acctDetails.FirstName?.startsWith('Olorunmo Ojo'))" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size:12px;font-weight:700;color:#000; ">Login User: System Admin</span>
+                    <button style="color:#c80912;font-size: 15px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-left: 50px;cursor: pointer; " class="app_loan_btn " (click)="SignOut() ">Sign Out</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

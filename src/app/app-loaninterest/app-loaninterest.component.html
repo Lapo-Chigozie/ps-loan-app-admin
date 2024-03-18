@@ -1,0 +1,64 @@
+<div class="Loanchart-title" style="display:table;">
+    <div style="float:left;width:50%;">
+        <h2>Settings</h2>
+    </div>
+    <div style="float:left;width:50%;padding-top: 20px;padding-bottom:25px;text-align:right;">
+        <button (click)="this.onSaveSettings()" style="width:150px;height: 50px;background-color: #094b03;margin-right:5px; " type="button " class="btn-btn-success ">Save Changings</button>
+    </div>
+</div>
+
+<!-- <div class="Loanchart-chatAcct"></div> -->
+
+<div style="width: 100%;display: table;">
+    <div class="loan-list" style="float:left;width:95%;">
+        <div class="Profile-Details " style="overflow:auto;">
+
+            <p>
+                <label class="container">Use Customer's Monthly Net-Pays as Maximum loan amount when applying for loan.
+                <input [checked]="this.LoanScheduled" 
+                (change)="onNetPaysCalculation($event)" type="checkbox">
+                <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p *ngIf="this.LoanScheduled===false">
+                <input style="padding-left: 10px;padding-right: 10px; width: 35%;" type="number" [(ngModel)]="this.MaxLoanAmount" value="{{this.MaxLoanAmount}}" placeholder="Enter Max Loan Amount" class="NewLoanTenure" maxlength="20" />
+            </p>
+
+            <p>
+                <input style="padding-left: 10px;padding-right: 10px; width: 35%;" type="number" required [(ngModel)]="this.MinLoanAmount" value="{{this.MinLoanAmount}}" placeholder="Enter Min Loan Amount" class="NewLoanTenure" maxlength="20" />
+            </p>
+
+            <p>
+                <label class="container">Use flat Rate for loan interest calculation
+              <input [checked]="this.LoanInterestCalculation" 
+              (change)="onLoanInterestCalculation($event)" type="checkbox">
+              <span class="checkmark"></span>
+              </label>
+            </p>
+
+            <p *ngIf="this.LoanInterestCalculation===false">
+                <input style="padding-left: 10px;padding-right: 10px; width: 35%;" type="text" [(ngModel)]="this.LoanInterest" value="{{this.LoanInterest}}" placeholder="Enter Loan Interest" class="NewLoanTenure" maxlength="5" />
+            </p>
+
+            <p>
+                <label class="container">
+                <span *ngIf="this.IsBlockLoanPortal">Enable Customer's to have access on Lapo Loan portal.</span>
+                <span *ngIf="this.IsBlockLoanPortal===false">Customer's don't have access on Lapo Loan portal.</span>
+                <input [checked]="this.IsBlockLoanPortal" (change)="onBlockLoanPortal($event)" type="checkbox">
+                <span class="checkmark"></span>
+                </label>
+            </p>
+
+            <p *ngIf="this.IsBlockLoanPortal">
+                <label>Reason for blocking customer's not to apply a loan from Lapo Loan Portal</label>
+                <textarea rows="15" cols="15" style="padding-left: 10px;padding-right: 10px; width: 35%;" required [(ngModel)]="this.message" title="Note the reason your blocking customers not to apply a loan on this portal" class="NewLoanTenure" maxlength="20">{{this.message}}</textarea>
+            </p>
+
+        </div>
+
+        <!-- this.ProfileDetails.accountId this.ProfileDetails.id this.ProfileDetails.staff -->
+    </div>
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

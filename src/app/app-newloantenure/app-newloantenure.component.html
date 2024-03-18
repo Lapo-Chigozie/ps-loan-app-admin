@@ -1,0 +1,34 @@
+<div class="Loanchart-title" style="display:table;">
+    <div style="float:left;width:50%;">
+        <h2>New Loan Tenure</h2>
+    </div>
+    <div style="float:left;width:50%;padding-top: 20px;padding-bottom:25px;text-align:right;">
+        <button (click)="this.onSaveLoanTenure()" style="width:150px;height: 50px;background-color: #094b03;margin-right:5px; " type="button " class="btn-btn-success ">Save Tenure</button>
+    </div>
+</div>
+<!-- <div class="Loanchart-chatAcct ">
+
+</div> -->
+<div style="width: 100%;display: table; ">
+    <div class="loan-list" style="float:left;width:95%;">
+        <div class="Profile-Details " style="overflow:auto;">
+
+            <p>
+                <select style="padding-left: 10px;padding-right: 10px; width: 37.5%;" [(ngModel)]="this.NewNameLoanTenure" class="NewLoanTenure" required>
+                    <option style="width: 100px;" selected value="">---Select-Tenure---</option>
+                    <!-- <option value="Month">Month</option> -->
+                    <option value="Months">Months</option>
+                </select>
+            </p>
+
+            <p>
+                <input style="padding-left: 10px;padding-right: 10px; width: 35%;" type="number" required [(ngModel)]="this.NewLoanTenure" placeholder="Enter Loan Tenure e.g 1" class="NewLoanTenure" maxlength="1000" />
+            </p>
+
+        </div>
+
+        <!-- this.ProfileDetails.accountId this.ProfileDetails.id this.ProfileDetails.staff -->
+    </div>
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

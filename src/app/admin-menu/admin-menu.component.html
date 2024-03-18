@@ -1,0 +1,47 @@
+<nav class="nav-Container">
+    <ul class="ul-Container">
+
+        <li><a (click)="SetActive('Dashboard')" [ngClass]="GetActive('Dashboard')" style="cursor: pointer;" [routerLink]="['/dashboard']" routerLinkActive="router-link-active">Dashboard</a></li>
+        <!-- <li *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && this.LoginUserPermission.IsNetPaysAccessRight"><a (click)="SetActive('MonthlyNetPay')" [ngClass]="GetActive('MonthlyNetPay')" style="cursor: pointer;" [routerLink]="['/appmonthlynetpays']" routerLinkActive="router-link-active">Monthly NetPay's</a></li> -->
+        <li *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && this.LoginUserPermission.ViewLoanNarration"><a (click)="SetActive('narrationlist')" [ngClass]="GetActive('narrationlist')" style="cursor: pointer;" [routerLink]="['/narrationlist']" routerLinkActive="router-link-active">Narrations</a></li>
+        <li *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && this.LoginUserPermission.AccessRighttoloansettings"><a (click)="SetActive('LoanSettings')" [ngClass]="GetActive('LoanSettings')" style="cursor: pointer;" [routerLink]="['/appsettings']" routerLinkActive="router-link-active">Loan Settings</a></li>
+        <li *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && this.LoginUserPermission.AccessRighttoviewtenure"><a (click)="SetActive('LoanTenure')" [ngClass]="GetActive('LoanTenure')" style=" cursor: pointer; " [routerLink]="[ '/apploantenures']" routerLinkActive="router-link-active ">Loan Tenure</a></li>
+
+        <li *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && this.LoginUserPermission.AccessRighttoviewhubs"><a (click)="SetActive('HubGroups')" [ngClass]="GetActive('HubGroups')" style="cursor: pointer;" [routerLink]="['/hubTeams']" routerLinkActive="router-link-active">Hubs</a></li>
+        <li *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && this.LoginUserPermission.AccessRighttoviewveammembers"><a (click)="SetActive('HubTeams')" [ngClass]="GetActive('HubTeams')" style="cursor: pointer;" [routerLink]="['/HubTeamMembers']" routerLinkActive="router-link-active">Hub Teams</a></li>
+        <li *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && this.LoginUserPermission.AccessRighttoviewveammembers"><a (click)="SetActive('DisbursementTeams')" [ngClass]="GetActive('DisbursementTeams')" style="cursor: pointer;" [routerLink]="['/disbursementTeams']" routerLinkActive="router-link-active">Disbursement Teams</a></li>
+        <!-- <li *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && this.LoginUserPermission.AccessRighttoteamsAndpermissions"><a (click)="SetActive('Staffs&Permissions')" [ngClass]="GetActive('Staffs&Permissions')" style="cursor: pointer;" [routerLink]="['/appstaffs']" routerLinkActive="router-link-active">Teams & Permissions</a></li> -->
+
+        <li *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && this.LoginUserPermission.AccessRighttoviewcustomers"><a (click)="SetActive('Customer')" [ngClass]="GetActive('Customer')" style="cursor: pointer;" [routerLink]="['/appclients']" routerLinkActive="router-link-active">Customers</a></li>
+        <li *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && (this.LoginUserPermission.IsCustomerLoanPermission || this.LoginUserPermission.AccessRighttoviewcustomersloans)"><a (click)="SetActive('CustomerLoan')" [ngClass]="GetActive('CustomerLoan')" style="cursor: pointer;" [routerLink]="['/loanapps']" routerLinkActive="router-link-active">Customer's Loan</a></li>
+        <li *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && this.LoginUserPermission.AccessRightToViewUploadBackRepaymentLoan"><a (click)="SetActive('RepaymentLoans')" [ngClass]="GetActive('RepaymentLoans')" style="cursor: pointer;" [routerLink]="['/repaymentloans']" routerLinkActive="router-link-active">Repayment Loans</a></li>
+        <li *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && this.LoginUserPermission.AccessRightToViewDisbursementLoan"><a (click)="SetActive('DisbursedLoans')" [ngClass]="GetActive('DisbursedLoans')" style="cursor: pointer;" [routerLink]="['/disbursedLoans']" routerLinkActive="router-link-active">Disbursed Loans</a></li>
+
+        <!-- <li><a ngClass="{{HyperActive5}} " style="cursor: pointer; " (click)="onChanagePasword($event) ">Change Password</a></li> -->
+        <li><a (click)="SetActive('MyProfile')" [ngClass]="GetActive('MyProfile')" style="cursor: pointer; " [routerLink]="[ '/appprofile']" routerLinkActive="router-link-active ">My Profile</a></li>
+        <!-- <li><a (click)="SetActive('ProfileEdit')" [ngClass]="GetActive('ProfileEdit')" style="cursor: pointer; " [routerLink]="[ '/appeditprofile']" routerLinkActive="router-link-active ">Profile Edit</a></li> -->
+        <li><a (click)="SetActive('MyPerissions')" [ngClass]="GetActive('MyPerissions')" style="cursor: pointer; " [routerLink]="[ '/myPerissions']" routerLinkActive="router-link-active ">My Permissions</a></li>
+    </ul>
+</nav>
+
+<script>
+    // Add active class to the current button (highlight it)
+    // var header = document.getElementsByClassName("nav-Container ");
+
+    // var ultag = header.getElementsByClassName("ul-Container ");
+    // var ultag = header.getElementsByClassName("ul-Container ");
+    // alert('');
+    // var litags = ultag.getElementsByTagName("li ");
+
+    // for (var i = 0; i < litags.length; i++) {
+
+    //     var atag = litags[i].getElementsByTagName("a ");
+
+    //     atag.addEventListener("click ", function() {
+    //         // var current = document.getElementsByClassName("active ");
+    //         atag.className = "active ";
+    //         // current[0].className = current[0].className.replace(" active ", " ");
+    //         // this.className += " active ";
+    //     });
+    // }
+</script>

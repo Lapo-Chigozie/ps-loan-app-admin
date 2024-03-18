@@ -1,0 +1,108 @@
+<div class="Loanchart-title">
+    <h2>Profile</h2>
+</div>
+
+<!-- <div class="Loanchart-chatAcct">
+
+</div> -->
+
+<div class="loan-list">
+
+    <div>
+        <h2 style="color:#000000;">Personnel Details</h2>
+        <br/>
+        <input class="form-control-btn" id="SiginBtn" value="Edit Profile Details" (click)="editProfileDetails($event)" />
+    </div>
+
+    <div *ngIf="this.ProfileDetails!=null && this.ProfileDetails.userProfileDetails!=null && this.ProfileDetails.userProfileDetails!=undefined" class="Profile-Details" style="overflow:auto;">
+
+        <p><b>First Name: </b> {{ProfileDetails.userProfileDetails.firstName}}</p>
+
+        <p> <b>Last Name: </b> {{ProfileDetails.userProfileDetails.lastName}}</p>
+
+        <p><b>Middle Name: </b> {{ProfileDetails.userProfileDetails.middleName}} </p>
+        <p><b>Email Address: </b> {{ProfileDetails.userProfileDetails.emailAddress}} </p>
+        <p>
+            <b>Phone Number: </b> {{ProfileDetails.userProfileDetails.phoneNumber}}
+        </p>
+        <!-- <p>
+            <b>Alt Phone Number: </b> {{ProfileDetails.userProfileDetails.altPhoneNumber}}
+        </p> -->
+        <!-- <p>
+            <b>Current Address: </b> {{ProfileDetails.userProfileDetails.currentAddress}}
+        </p> -->
+        <!-- <p>
+            <b>Age: </b> {{ProfileDetails.userProfileDetails.age}}
+        </p> -->
+
+        <p>
+            <b>Gender: </b> {{ProfileDetails.userProfileDetails.gender}}
+        </p>
+
+        <p>
+            <b>Marital Status: </b> {{ProfileDetails.userProfileDetails.marrintalStatus}}
+        </p>
+        <!-- <p>
+            <b>Position Or Role: </b> {{ProfileDetails.userProfileDetails.positionOrRole}}
+        </p>
+        <p>
+            <b>Created Date: </b> {{ProfileDetails.userProfileDetails.createdDate}}
+        </p> -->
+    </div>
+    <!-- this.ProfileDetails.accountId this.ProfileDetails.id this.ProfileDetails.staff -->
+
+    <div>
+        <h2 style="color:#000000; ">Two Factor Auth Settings.</h2>
+    </div>
+    <div class="Profile-Details " style="overflow:auto;background-color: #fff;padding-top: 5px;padding-bottom: 5px;margin-top: 2px;margin-bottom: 2px; ">
+        <label class="container " style="color: #000000; ">
+
+            <input [checked]="ProfileDetails.allowLoginTwoFactor" (change)="TwoFactorActivator($event) " type="checkbox " />
+            <b>Status: </b> <b *ngIf="ProfileDetails.allowLoginTwoFactor==false" style="color: red; ">Not Active</b> <b *ngIf="ProfileDetails.allowLoginTwoFactor " style="color: rgb(8, 139, 67); ">Active</b>
+            <span class="checkmark "></span>
+            </label>
+
+        <!-- <p *ngIf="ProfileDetails.allowLoginTwoFactor==false ">
+            <b>Status: </b> <b style="color: red; ">  Dis-enabled  </b> <span style="cursor:pointer;text-alig:center;text-decoration:underline;color:blue;margin-left:10px;text-align:right;display:block; " (click)="TwoFactorActivator() ">Click here to Enable Two Factor Auth</span>
+        </p> -->
+    </div>
+
+    <div>
+        <h2 style="color:#000000; ">Account Details</h2>
+    </div>
+    <div *ngIf="this.ProfileDetails!=null && this.ProfileDetails.userProfileDetails!=null && this.ProfileDetails.userProfileDetails!=undefined" class="Profile-Details " style="overflow:auto; ">
+
+        <p>
+            <b>Hub: </b> {{ProfileDetails.userProfileDetails.hubGroup}}
+        </p>
+
+        <p>
+            <b>Role: </b> {{ProfileDetails.userProfileDetails.roleType}}
+        </p>
+
+        <p>
+            <b>User Name: </b> {{ProfileDetails.username}}
+        </p>
+
+        <p>
+            <b>Account Type: </b> {{ProfileDetails.accountType}}
+        </p>
+
+        <p *ngif="ProfileDetails.accountVerify ">
+            <b>Status: </b> Active
+        </p>
+
+        <p *ngif="ProfileDetails.accountVerify==false ">
+            <b>Status: </b> Not Active
+        </p>
+
+        <p>
+            <b>Last SignIn Date: </b> {{ProfileDetails.lastLoginDate}}
+        </p>
+        <p>
+            <b>Created Date: </b> {{ProfileDetails.createdDate}}
+        </p>
+    </div>
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

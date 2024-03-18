@@ -1,0 +1,40 @@
+<div class="Loanchart-title" style="display:table;">
+    <div style="float:left;width:50%;">
+        <h2>Create Hub</h2>
+    </div>
+    <div style="float:left;width:50%;padding-top: 20px;padding-bottom:25px;text-align:right;">
+        <button (click)="this.onCreateHubGroup()" style="width:150px;height: 50px;background-color: #094b03;margin-right:5px; " type="button " class="btn-btn-success ">Save</button>
+    </div>
+</div>
+<!-- <div class="Loanchart-chatAcct ">
+
+</div> -->
+<div style="width: 100%;display: table; ">
+    <div class="loan-list" style="float:left;width:95%;">
+        <div class="Profile-Details " style="overflow:auto;">
+
+            <p>
+                <input style="padding-left: 10px;padding-right: 10px; width: 50%;" type="text" required [(ngModel)]="this.HubGroup" placeholder="Enter Hub Name e.g Lagos Fredral 1" class="NewLoanTenure" maxlength="1000" />
+            </p>
+
+            <p>
+                <label class="container">
+                    <span>Set as Default Hub</span>
+                    <input  (change)="onSendSMSCustomerLoanApplicationSubmitted($event)" type="checkbox" />
+                    <span class="checkmark"></span>
+                    </label>
+            </p>
+
+            <p *ngIf="IsDefaultHub">
+                <input style="padding-left: 10px;padding-right: 10px; width: 50%; " type="email" required [(ngModel)]="this.EnterEmailAddress" placeholder="Enter Email Address" class="NewLoanTenure" maxlength="1000" value="lapomicro@lapo.org.ng" required />
+            </p>
+
+            <p *ngIf="IsDefaultHub">
+                <input style="padding-left: 10px;padding-right: 10px; width: 50%;" type="text" required [(ngModel)]="this.EnterPhoneNumber" placeholder="08000000000" value="08000000000" class="NewLoanTenure" maxlength="1000" required />
+            </p>
+        </div>
+        <!-- this.ProfileDetails.accountId this.ProfileDetails.id this.ProfileDetails.staff -->
+    </div>
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>

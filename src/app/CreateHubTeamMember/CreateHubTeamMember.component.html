@@ -1,0 +1,304 @@
+<div class="Loanchart-title" style="display:table;">
+    <div style="float:left;width:50%;">
+        <h2>Create Team Member</h2>
+    </div>
+    <div style="float:left;width:50%;padding-top: 20px;padding-bottom:25px;text-align:right;">
+        <button *ngIf="this.LoginUserPermission!= null && this.LoginUserPermission!= undefined && this.LoginUserPermission.AccessRighttocreateateammember" (click)="this.onCreateTeamMember()" style="width:150px;height: 50px;background-color: #094b03;margin-right:5px;"
+            type="button" class="btn-btn-success">Create</button>
+    </div>
+</div>
+<!-- <div class="Loanchart-chatAcct ">
+
+</div> -->
+<div style="width: 100%;display: table;">
+
+    <div class="loan-list" style="float:left;width:46%;">
+        <p>
+            <select (change)="onhangeUserRole($event)" style="padding-left: 10px;padding-right: 10px; width: 75.5%;" [(ngModel)]="this.UserType" class="NewLoanTenure" required>
+                <option style="width: 100px;" selected value="">--Select---User---Role--</option>
+                <option style="width: 100px;"  value="RELATIONSHIP OFFICER">RELATIONSHIP OFFICER</option>
+                <option style="width: 100px;"  value="TEAM LEADS">TEAM LEADS</option>
+                <option style="width: 100px;"  value="RECONCILIATION AND ACCOUNT OFFICER">RECONCILIATION AND ACCOUNT OFFICER(RAO)</option>
+                <option style="width: 100px;"  value="ASSISTANT HEAD OF OPERATION">ASSISTANT HEAD OF OPERATION</option>
+                <option style="width: 100px;"  value="HEAD OF OPERATIONS">HEAD OF OPERATION</option>
+                <option style="width: 100px;"  value="GROUP HEAD">GROUP HEAD</option>
+                <option style="width: 100px;"  value="DISBURSEMENT OFFICER">DISBURSEMENT OFFICER</option>
+            </select>
+        </p>
+
+        <p>
+            <select style="padding-left: 10px;padding-right: 10px; width: 75.5%;" [(ngModel)]="this.SelectHubGroupId" class="NewLoanTenure" required>
+                <option style="width: 100px;" selected value="">---Select---Hub---</option>
+                <option style="width: 100px;" *ngFor="let item of this.appDashboard.DataTableLists" value="{{item.id}}">{{item.hubTeamGroupName}}</option>
+            </select>
+        </p>
+
+        <p>
+            <input style="padding-left: 10px;padding-right: 10px; width: 70%; " type="hidden" required [(ngModel)]="this.EnterEmailAddress" placeholder="Enter Email Address" class="NewLoanTenure" maxlength="1000" value="lapomicro@lapo.org.ng" required/>
+        </p>
+
+        <p *ngIf="this.IsSystemRef==true">
+            <input style="padding-left: 10px;padding-right: 10px; width: 70%;" type="text" [(ngModel)]="this.SystemRef" placeholder="System Ref e.g 4899889jkjjkjd838932ndddnd38787922" class="NewLoanTenure" required/>
+        </p>
+
+        <p *ngIf="this.IsSystemRef==true">
+            <input style="padding-left: 10px;padding-right: 10px; width: 70%;" type="text" [(ngModel)]="this.SystemRole" placeholder="System Role e.g Admin" class="NewLoanTenure" required />
+        </p>
+
+        <!-- (keyup.delete)="this.onTeamMemberChange($event, $event.target)" (keyup.backspace)="this.onTeamMemberChange($event, $event.target)" (keydown.enter)="this.onTeamMemberChange($event, $event.target)" (keyup.enter)="this.onTeamMemberChange($event, $event.target)"
+        (keypress)="this.onTeamMemberChange($event, $event.target)" (keypress.enter)="this.onTeamMemberChange($event, $event.target)" (paste)="this.onTeamMemberChange($event, $event.target)" -->
+        <div class="dropdown" style="width: 71%;">
+            <div style="width: 100%;">
+                <input (input)="this.onTeamMemberChange($event, $event.target)" style="padding-left: 10px;padding-right: 10px; width: 98.5%;" type="text" required [(ngModel)]="this.EnterFirstName" placeholder="Enter First Name e.g John" class="NewLoanTenure" maxlength="1000"
+                    required/>
+                <p *ngIf="this.IsErrorHappen" style="color: #d30919;font-size: 12px;">
+                    <span style="color: #e80d1f;">Team Member not found</span>
+                </p>
+                <img *ngIf="this.IsProgressBarShowing" src="assets/images/small_icon.gif" width="20" />
+            </div>
+
+            <div *ngIf="this.listDivisionTeamList!=null && this.listDivisionTeamList!=undefined && this.listDivisionTeamList.length > 0" id="myDropdown" class="dropdown-content" style="width:100%;">
+                <a *ngFor="let item of this.listDivisionTeamList" (click)="onClickDivisionTeamEventHandler($event, item)">{{item.itemName}} - ({{item.item_Title_Desc}}) ({{item.bu}})</a>
+            </div>
+        </div>
+
+        <p>
+            <input style="padding-left: 10px;padding-right: 10px; width: 70%;" type="text" required [(ngModel)]="this.EnterMiddleName" placeholder="Enter Middle Name" class="NewLoanTenure" maxlength="1000" />
+        </p>
+
+        <p>
+            <input style="padding-left: 10px;padding-right: 10px; width: 70%;" type="text" required [(ngModel)]="this.EnterLastName" placeholder="Enter Last Name" class="NewLoanTenure" maxlength="1000" required/>
+        </p>
+
+        <p>
+            <input style="padding-left: 10px;padding-right: 10px; width: 70%;" type="hidden" required [(ngModel)]="this.EnterPhoneNumber" placeholder="08000000000" value="08000000000" class="NewLoanTenure" maxlength="1000" required />
+        </p>
+
+
+
+        <p>
+            <input style="padding-left: 10px;padding-right: 10px; width: 70%;" type="hidden" required [(ngModel)]="this.TeamMemberOfficeAddress" value="40, Okporo Road, Opposite Ecobank, Rumuodara, Port-Harcourt, Rivers State" placeholder="" class="NewLoanTenure"
+                maxlength="1000" required />
+        </p>
+
+        <p>
+            <label class="container">Access Right to create a hub.
+              <input [checked]="this.AccessRighttocreateahub" 
+              (change)="onAccessRighttocreateahub($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to view hubs.
+              <input [checked]="this.AccessRighttoviewhubs" (change)="onAccessRighttoviewhubs($event)" type="checkbox" />
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to create a team member.
+              <input [checked]="this.AccessRighttocreateateammember" 
+              (change)="onAccessRighttocreateateammember($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to view team members.
+              <input [checked]="this.AccessRighttoviewveammembers" 
+              (change)="onAccessRighttoviewveammembers($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to edit team member permissions.
+              <input [checked]="this.AccessRightToEditTeamMemberPermissions" 
+              (change)="onAccessRightToEditTeamMemberPermissions($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to approve customer loan.
+              <input [checked]="this.AccessRighttoapprovecustomerloan" 
+              (change)="onAccessRighttoapprovecustomerloan($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+
+
+        <p>
+            <label class="container">Access Right to reject a loan.
+              <input [checked]="this.AccessRighttorejectaloan" 
+              (change)="onAccessRighttorejectaloan($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to view loan details.
+              <input [checked]="this.AccessRighttoviewloandetails" 
+              (change)="onAccessRighttoviewloandetails($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to view customers loans.
+              <input [checked]="this.AccessRighttoviewcustomersloans" 
+              (change)="onAccessRighttoviewcustomersloans($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p style="padding-bottom:0.1px;padding-top:0.1px;">
+
+        </p>
+    </div>
+
+    <div class="loan-list" style="float:left;width:46%;">
+
+        <p>
+            <label class="container">Access Right to disable hubs.
+              <input [checked]="this.AccessRighttodisablehubs" 
+              (change)="onAccessRighttodisablehubs($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to view customers.
+              <input [checked]="this.AccessRighttoviewcustomers" 
+              (change)="onAccessRighttoviewcustomers($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to disable customers to apply for a loan.
+              <input [checked]="this.AccessRighttodisablecustomerstoapplyforaloan" 
+              (change)="onAccessRighttodisablecustomerstoapplyforaloan($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to create loan narration.
+              <input [checked]="this.CreateLoanNarration" 
+              (change)="onCreateLoanNarration($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to view loan narration.
+              <input [checked]="this.ViewLoanNarration" 
+              (change)="onViewLoanNarration($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+
+        <p>
+            <label class="container">Access Right to print a loan
+              <input [checked]="this.AccessRightToPrintLoan" 
+              (change)="onAccessRightToPrintLoan($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to upload repayment Loans
+              <input [checked]="this.AccessRightToUploadBackRepaymentLoan" 
+              (change)="onAccessRightToUploadBackRepaymentLoan($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to upload back disbursement loan.
+              <input [checked]="this.AccessRightToUploadBackDISBURSEMENTLoan" 
+              (change)="onAccessRightToUploadBackDISBURSEMENTLoan($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to anonymous loan application.
+              <input [checked]="this.AccessRightToAnonymousLoanApplication" 
+              (change)="onAccessRightToAnonymousLoanApplication($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+
+
+        <p>
+            <label class="container">Access Right to export disbursement loan.
+              <input [checked]="this.AccessRightToExportDISBURSEMENTLoan" 
+              (change)="onAccessRightToExportDISBURSEMENTLoan($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to view upload back repayment loan.
+              <input [checked]="this.AccessRightToViewUploadBackRepaymentLoan" 
+              (change)="onAccessRightToViewUploadBackRepaymentLoan($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to view disbursed loan
+              <input [checked]="this.AccessRightToViewDisbursementLoan" 
+              (change)="onAccessRightToViewDisbursementLoan($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to teams And permissions.
+              <input [checked]="this.AccessRighttoteamsAndpermissions" 
+              (change)="onAccessRighttoteamsAndpermissions($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to loan settings.
+              <input [checked]="this.AccessRighttoloansettings" 
+              (change)="onAccessRighttoloansettings($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+
+        <p>
+            <label class="container">Access Right to create tenure.
+              <input [checked]="this.AccessRighttocreatetenure" 
+              (change)="onAccessRighttocreatetenure($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p>
+            <label class="container">Access Right to view tenure.
+              <input [checked]="this.AccessRighttoviewtenure" 
+              (change)="onAccessRighttoviewtenure($event)" type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+        </p>
+
+        <p style="padding-bottom:29px;padding-top:29px;">
+
+        </p>
+        <!-- <p></p> -->
+        <!-- this.ProfileDetails.accountId this.ProfileDetails.id this.ProfileDetails.staff -->
+    </div>
+</div>
+<app-spinner-loading></app-spinner-loading>
+<router-outlet></router-outlet>
